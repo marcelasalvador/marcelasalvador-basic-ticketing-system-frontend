@@ -15,25 +15,41 @@ function Login(){
    
   });
 
-  // const updateState = e => setState({
-  //   ...state,
-  //   [e.target.name]: e.target.value
-  // });
-  const updateState = e => setState(prevState => ({
-    ...prevState,
+  const updateState = e => setState({
+    ...state,
     [e.target.name]: e.target.value
-  }));
+  });
+  // const updateState = e => setState(prevState => ({
+  //   ...prevState,
+  //   [e.target.name]: e.target.value
+  // }));
   
+
+  // const onFormSubmit = e => {
+  //   e.preventDefault();
+  //   console.log(state)
+  //   axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, state)
+  //     .then(axiosResponse => {
+  //       console.log(axiosResponse.data)
+  //       storeToken(axiosResponse.data.authToken);
+  //       authenticateUser();
+  //       navigate('/');
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   const onFormSubmit = e => {
     e.preventDefault();
-    console.log(state)
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, state)
       .then(axiosResponse => {
-        console.log(axiosResponse.data)
-        storeToken(axiosResponse.data.authToken);
+        const { isAdmin, authToken } = axiosResponse.data;
+        storeToken(authToken);
         authenticateUser();
-        navigate('/');
+        if (isAdmin) {
+          navigate('/admin-dashboard');
+        } else {
+          navigate('/');
+        }
       })
       .catch(err => console.log(err));
   }
