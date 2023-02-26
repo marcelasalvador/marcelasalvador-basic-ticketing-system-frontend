@@ -2,7 +2,6 @@ import Login from './pages/Login';
 import ClientSignup from './pages/ClientSignup';
 import IsAnon from './components/IsAnon';
 import IsPrivate from './components/IsPrivate';
-import IsAdmin from './components/IsAdmin';
 import HomePage from './pages/HomePage';
 import AdminDashboard from './pages/AdminDashboard'
 import Navbar from './components/Navbar';
