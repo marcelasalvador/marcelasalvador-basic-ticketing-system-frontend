@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function ClientSignup(){
+function SignupPage(){
 
   const navigate = useNavigate();
 
@@ -44,4 +44,4 @@ function ClientSignup(){
   )
 }
 
-export default ClientSignup;
+export default SignupPage;

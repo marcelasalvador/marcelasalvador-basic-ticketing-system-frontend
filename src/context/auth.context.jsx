@@ -10,6 +10,7 @@ function AuthProviderWrapper(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isNotAdmin, setIsNotAdmin] = useState(true);
 
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
@@ -29,18 +30,21 @@ function AuthProviderWrapper(props) {
           setIsLoading(false);
           setUser(user);
           setIsAdmin(user.role === "admin");
+          setIsNotAdmin(user.role === "user");
         })
         .catch((error) => {
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
           setIsAdmin(false);
+          setIsNotAdmin(false);
         });
     } else {
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
       setIsAdmin(false);
+      setIsNotAdmin(false);
     }
   };
 
@@ -64,6 +68,7 @@ function AuthProviderWrapper(props) {
         isLoading,
         user,
         isAdmin,
+        isNotAdmin,
         storeToken,
         authenticateUser,
         logOutUser,

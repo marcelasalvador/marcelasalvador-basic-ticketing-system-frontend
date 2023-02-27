@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 
-function Login() {
+function LoginPage() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -50,4 +50,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;
