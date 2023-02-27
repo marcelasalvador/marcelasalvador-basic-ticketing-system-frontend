@@ -12,8 +12,10 @@ function AuthProviderWrapper(props) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isNotAdmin, setIsNotAdmin] = useState(true);
 
-  const storeToken = (token) => {
+  const storeToken = (token, sessionCookie) => {
     localStorage.setItem("authToken", token);
+    // localStorage.setItem('sessionCookie', sessionCookie);
+    document.cookie = `session=${token}; HttpOnly; SameSite=Strict`;
   };
 
   const authenticateUser = () => {

@@ -24,8 +24,8 @@ function LoginPage() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, state)
       .then((axiosResponse) => {
-        const { role, authToken } = axiosResponse.data;
-        storeToken(authToken);
+        const { role, authToken, sessionCookie } = axiosResponse.data;
+        storeToken(authToken, sessionCookie);
         authenticateUser();
         if (role === 'admin') {
           navigate('/admin-dashboard');
